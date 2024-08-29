@@ -10,3 +10,9 @@
     letter-spacing: -0.01em;
     color: #fff;
 }
+
+.viewBtn:hover,
+.viewBtn:focus {
+    background-color: #d84343;
+    cursor: pointer;
+}
