@@ -1,14 +1,12 @@
-import SearchBar from "../../components/SearchBar/SearchBar";
+import Filters from "../../components/Filters/Filters";
 import css from "./CatalogPage.module.css";
 
 
 export default function CatalogPage() {
 
     return (
-        <div>
-            <div>
-            <SearchBar/>
-            </div>
+        <div className={css.catalogCont}>
+            <Filters/>
        </div>
     )
 }
