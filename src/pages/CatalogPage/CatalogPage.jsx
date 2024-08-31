@@ -25,7 +25,7 @@ export default function CatalogPage() {
 
     fetchCampers();
   }, []);
-console.log(campers.items);
+
   return (
     <div className={css.catalogCont}>
       {loading && <p>Loading...</p>}

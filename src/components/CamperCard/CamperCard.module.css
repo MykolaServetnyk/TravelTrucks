@@ -1,0 +1,90 @@
+.itemCard {
+    display: flex;
+    border: 1px solid #dadde1;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 32px;
+    gap: 24px;
+}
+
+.cardImg {
+    border-radius: 10px;
+    width: 292px;
+    background-size: cover;
+    background-position: center;
+}
+
+.favBtn {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: #fff;
+}
+
+.favoIcon {
+    width: 26px;
+    height: 24px;
+}
+
+.cardHead {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.priceFav {
+    display: flex;
+    margin-left: auto;
+}
+
+.price {
+    margin-right: 12px;
+}
+
+.reviews {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+}
+
+.locIcon {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+}
+
+.description {
+    white-space: nowrap;
+    /* Текст не переноситься на новий рядок */
+    overflow: hidden;
+    /* Приховує текст, який не вміщується */
+    text-overflow: ellipsis;
+    /* Додає трикрапку (...) в кінці, якщо текст не вміщується */
+}
+
+.showMoreBtn {
+    background-color: #e44848;
+    width: 173px;
+    height: 56px;
+    border-radius: 200px;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: #fff;
+}
+
+.showMoreBtn:hover,
+.showMoreBtn:focus {
+    background-color: #d84343;
+    cursor: pointer;
+}
