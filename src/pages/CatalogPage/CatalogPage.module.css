@@ -1,4 +1,4 @@
 .catalogCont {
     display: flex;
-    padding: 24px 64px;
+    padding: 24px 64px 0 64px;
 }

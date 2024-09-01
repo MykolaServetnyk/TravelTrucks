@@ -8,8 +8,10 @@
 }
 
 .cardImg {
+    box-sizing: border-box;
     border-radius: 10px;
-    width: 292px;
+    min-width: 292px;
+    height: 320px;
     background-size: cover;
     background-position: center;
 }

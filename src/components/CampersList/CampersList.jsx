@@ -11,8 +11,8 @@ export default function CampersList({ campers }) {
     <div>
       <ul className={css.itemsList}>
         {campers.map((camper) => (
-          <li key={camper.id}>
-                <CamperCard {...camper} />
+          <li key={camper.id}> {/* Використовуйте camper.id як унікальний ключ */}
+            <CamperCard {...camper} />
           </li>
         ))}
       </ul>
