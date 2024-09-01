@@ -1,8 +1,13 @@
+.equipment {
+    margin-bottom: 32px;
+}
+
 .subtitle {
     font-weight: 600;
     font-size: 20px;
     line-height: 1.2;
     color: #101828;
+    margin-bottom: 24px;
 }
 
 .list {
@@ -11,7 +16,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    padding-top: 24px;
     padding-left: 0;
+    border-top: 1px solid #dadde1;
 
 }
 

@@ -12,7 +12,6 @@ export default function VehicleEquipment({ selectedEquipment, setSelectedEquipme
     );
   };
 
-  // Об'єкт, що містить дані про кожен тип обладнання та його іконку
   const equipmentTypes = [
     { name: 'AC', icon: 'ac' },
     { name: 'Automatic', icon: 'automat' },

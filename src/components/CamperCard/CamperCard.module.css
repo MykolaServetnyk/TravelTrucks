@@ -33,6 +33,7 @@
     font-weight: 600;
     font-size: 24px;
     line-height: 1.33;
+    margin-bottom: 8px;
 }
 
 .priceFav {
@@ -42,12 +43,21 @@
 
 .price {
     margin-right: 12px;
+    align-items: center;
+}
+
+.revLocBlock {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
 }
 
 .reviews {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
+    margin-right: 16px;
+
 }
 
 .location {
@@ -68,9 +78,11 @@
     /* Приховує текст, який не вміщується */
     text-overflow: ellipsis;
     /* Додає трикрапку (...) в кінці, якщо текст не вміщується */
+    margin-bottom: 24px;
 }
 
 .showMoreBtn {
+    border: none;
     background-color: #e44848;
     width: 173px;
     height: 56px;

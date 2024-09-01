@@ -26,11 +26,12 @@ export default function CatalogPage() {
     fetchCampers();
   }, []);
 
+  // Додамо перевірку перед використанням campers.items
   return (
     <div className={css.catalogCont}>
       {loading && <p>Loading...</p>}
       {error && <p>Something went wrong...</p>}
-      {!loading && !error && (
+      {!loading && !error && campers.items && (
         <>
           <Filters />
           <CampersList campers={campers.items} />
