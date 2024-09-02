@@ -24,7 +24,9 @@
     color: var(--main-black-color);
 }
 
-.mapIcon {
+.locationIcon {
+    width: 20px;
+    height: 20px;
     position: absolute;
     top: 50px;
     left: 20px;
@@ -34,7 +36,6 @@
 
 .icon {
     fill: var(--main-black-color);
-    transition: fill var(--animation);
 }
 
 .locationInput::placeholder {
@@ -98,21 +99,18 @@
     border-color: var(--main-button-color);
 }
 
-.equipmentList {
+.equipmentList,
+.typeList {
+    padding: 0;
+    list-style: none;
     display: flex;
     flex-wrap: wrap;
     column-gap: 12px;
-    flex-direction: row;
     row-gap: 8px;
     margin-bottom: 32px;
 }
 
 .typeList {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 12px;
-    flex-direction: row;
-    row-gap: 8px;
     margin-bottom: 40px;
 }
 

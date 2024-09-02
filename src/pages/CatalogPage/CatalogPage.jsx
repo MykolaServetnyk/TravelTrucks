@@ -1,7 +1,6 @@
 import CampersList from "../../components/CampersList/CampersList";
 import Loader from "../../components/Loader/Loader";
 import Filters from "../../components/Filters/Filters";
-import LoadMoreButton from "../../components/LoadMoreButton/LoadMoreButton";
 
 import { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
@@ -18,6 +17,7 @@ export default function CatalogPage() {
   const loading = useSelector(selectLoading);
 
   useEffect(() => {
+    console.log("fetch campers");
     dispatch(fetchCampers());
   }, [dispatch]);
 
@@ -26,7 +26,7 @@ export default function CatalogPage() {
       {loading && <Loader isLoading={loading} />}
         <div className={css.catalogCont}>
           <Filters />
-          <CampersList campers={campers} />
+          <CampersList/>
         </div>  
           <Toaster position="top-right"/>
     </section>

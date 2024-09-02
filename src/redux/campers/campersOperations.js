@@ -7,7 +7,7 @@ export const fetchCampers = createAsyncThunk("campers/fetchAll", async (_, thunk
     const { campers, filters } = thunkAPI.getState();
 
     const { page } = campers;
-    const { location, AC, transmission, kitchen, TV, bathroom, } = filters.filterParams;
+    const { location, AC, transmission, kitchen, TV, bathroom, form } = filters.filterParams;
 
     const params = new URLSearchParams({
         page,
@@ -26,7 +26,7 @@ export const fetchCampers = createAsyncThunk("campers/fetchAll", async (_, thunk
         return response.data;
     } catch (error) {
         if (error.response && error.response.status === 404) {
-            return thunkAPI.rejectWithValue("No such campers were found");
+            return thunkAPI.rejectWithValue("No campers were found that match your filters");
         } else {
             return thunkAPI.rejectWithValue(error.message);
         }

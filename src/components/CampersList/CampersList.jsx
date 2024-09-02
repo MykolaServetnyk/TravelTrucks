@@ -1,17 +1,14 @@
-import css from "./CampersList.module.css";
-import CamperCard from "../CamperCard/CamperCard";
-
 import { useDispatch, useSelector } from "react-redux";
-import { selectCampers, selectError } from "../../redux/campers/selectors.js";
-import { fetchCampers } from "../../redux/campers/operations.js";
-import { incrementPage } from "../../redux/campers/slice.js";
+import { selectCampers, selectError } from "../../redux/campers/campersSelectors.js";
+import { fetchCampers } from "../../redux/campers/campersOperations.js";
+import { incrementPage } from "../../redux/campers/campersSlice.js";
 
 import LoadMoreButton from "../LoadMoreButton/LoadMoreButton.jsx";
 import CamperCard from "../CamperCard/CamperCard.jsx";
 
-import css from "./CamperCardCollection.module.css";
+import css from "./CampersList.module.css";
 
-export default function CamperCardCollection() {
+export default function CampersList() {
   const dispatch = useDispatch();
   const campers = useSelector(selectCampers);
   const error = useSelector(selectError);
@@ -24,10 +21,10 @@ export default function CamperCardCollection() {
       dispatch(fetchCampers());
     }
   };
-
+console.log(campers)
   return (
     <div className={css.camperCardCollectionWrapper}>
-      <ul className={css.collectionList}>
+      <ul className={css.itemsList}>
         {items.map((camper) => (
           <li key={camper.id}>
             <CamperCard camper={camper} />

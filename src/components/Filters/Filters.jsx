@@ -1,18 +1,20 @@
 import toast from "react-hot-toast";
 import { Field, Form, Formik } from "formik";
 import clsx from "clsx";
+import { nanoid } from 'nanoid';
+
 
 import sprite from "../../assets/sprite.svg"
 
 import { useId } from "react";
 import { useDispatch } from "react-redux";
-import { setFilterParams } from "../../redux/filters/slice.js";
-import { fetchCampers } from "../../redux/campers/operations.js";
-import { resetPage } from "../../redux/campers/slice.js";
+import { setFilterParams } from "../../redux/filters/filtersSlice.js";
+import { fetchCampers } from "../../redux/campers/campersOperations.js";
+import { resetPage } from "../../redux/campers/campersSlice.js";
 
-import FormButton from "../FormButton/FormButton.jsx";
+import SearchBtn from "../SearchBtn/SearchBtn.jsx";
 
-import css from "./FilterForm.module.css";
+import css from "./Filters.module.css";
 
 const initialValues = {
   location: "",
@@ -27,12 +29,12 @@ const initialValues = {
 export default function FilterForm() {
   const dispatch = useDispatch();
 
-  const cityFieldId = useId();
-  const acFieldId = useId();
-  const transmissionFieldId = useId();
-  const kitchenFieldId = useId();
-  const tvFieldId = useId();
-  const bathroomFieldId = useId();
+  const cityFieldId = nanoid();
+  const acFieldId = nanoid();
+  const transmissionFieldId = nanoid();
+  const kitchenFieldId = nanoid();
+  const tvFieldId = nanoid();
+  const bathroomFieldId = nanoid();
 
   const handleSubmit = (values, actions) => {
     dispatch(setFilterParams(values));
@@ -143,7 +145,7 @@ export default function FilterForm() {
             <li>
               <label>
                 <Field className={css.visuallyHidden} type="radio" name="form" value="fullyIntegrated" />
-                <span className={`${css.custom} ${css.special}`}>
+                <span className={clsx(css.custom, css.special)}>
                   <svg className={css.icon}>
                     <use xlinkHref={`${sprite}#fully`}></use>
                   </svg>
@@ -163,7 +165,7 @@ export default function FilterForm() {
               </label>
             </li>
           </ul>
-          <FormButton>Search</FormButton>
+          <SearchBtn>Search</SearchBtn>
         </Form>
       )}
     </Formik>

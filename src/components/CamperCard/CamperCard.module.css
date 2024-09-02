@@ -21,13 +21,21 @@
     display: flex;
     align-items: center;
     border: none;
-    background-color: #fff;
+    background-color: transparent;
 }
 
-.favoIcon {
+.isFavoriteIcon {
     width: 26px;
     height: 24px;
+    fill: #101828;
 }
+
+.isFavoriteIconRed {
+    width: 26px;
+    height: 24px;
+    fill: #e44848;
+}
+
 
 .cardHead {
     display: flex;
@@ -74,12 +82,10 @@
 }
 
 .description {
-    white-space: nowrap;
-    /* Текст не переноситься на новий рядок */
     overflow: hidden;
-    /* Приховує текст, який не вміщується */
     text-overflow: ellipsis;
-    /* Додає трикрапку (...) в кінці, якщо текст не вміщується */
+    white-space: nowrap;
+    max-width: 524px;
     margin-bottom: 24px;
 }
 

@@ -8,62 +8,29 @@ import css from "./CamperCard.module.css";
 import sprite from "../../assets/sprite.svg";
 
 import BadgesList from "../BadgesList/BadgesList";
-import ratingImage from "../../assets/rating.png"; // Імпортуємо зображення рейтингу
+import ratingImage from "../../assets/rating.png";
 
+export default function CamperCard({camper}) {
 
+  const dispatch = useDispatch();
+  const { favorites } = useSelector(selectCampers);
+  const isFavorite = favorites.some((item) => item.id === camper.id);
 
-export default function CamperCard({
-  id = "no-data",
-  name = "Unnamed Camper",
-  price = 0.0,
-  rating = 0,
-  location = "Unknown location",
-  description = "No description available",
-  reviews = [],
-  gallery = [{ thumb: "default-image-url.jpg" }],
-  AC = false,
-  bathroom = false,
-  kitchen = false,
-  radio = false,
-  refrigerator = false,
-  microwave = false,
-  water = false,
-  engine = "",
-}) {
-  const priceNumber = parseFloat(price);
-  const priceFormat = !isNaN(priceNumber) ? priceNumber.toFixed(2) : "0.00";
+  const { gallery, name, price, rating, reviews, location, description, id } = camper;
 
-  const slicedText = (text, maxLength) => {
-    if (text.length > maxLength) {
-      return text.substring(0, maxLength) + "...";
-    }
+  const [country, city] = location.split(", ");
+  const swappedLocation = `${city}, ${country}`;
 
-    const location = useLocation();
-
-    return text;
+ const handleClick = () => {
+    dispatch(toggleFavorite(camper.id));
   };
-
-  const slicedDescription = slicedText(description, 61);
-
-  // Формуємо список бейджів з булевими значеннями
-  const booleanItems = [
-    { label: "AC", value: AC },
-    { label: "Bathroom", value: bathroom },
-    { label: "Kitchen", value: kitchen },
-    { label: "Radio", value: radio },
-    { label: "Refrigerator", value: refrigerator },
-    { label: "Microwave", value: microwave },
-    { label: "Water", value: water },
-  ].filter(item => item.value); // Фільтруємо, щоб залишити тільки ті, що мають значення true
-
-  // Додаємо `engine` тільки якщо він визначений і не є порожнім рядком
-  const camperItems = engine ? [...booleanItems, { label: "Engine", value: engine }] : booleanItems;
-
+  
   return (
+    
     <div className={css.itemCard}>
       <div
         className={css.cardImg}
-        style={{ backgroundImage: `url(${gallery[0].thumb})` }}
+        style={{ backgroundImage: `url(${gallery?.[0]?.original || ''})` }}
         role="img"
         aria-label={name}
       ></div>
@@ -72,11 +39,10 @@ export default function CamperCard({
           <p>{name}</p>
           <div className={css.priceFav}>
             <p className={css.price}>
-              <span>&euro;</span>
-              {priceFormat}
+              <span>&euro;</span>{price.toFixed(2)}
             </p>
-            <button className={css.favBtn}>
-              <svg className={css.favoIcon}>
+            <button className={css.favBtn} onClick={handleClick}>
+              <svg className={isFavorite ? css.isFavoriteIconRed : css.isFavoriteIcon}>
                 <use xlinkHref={`${sprite}#heart`}></use>
               </svg>
             </button>
@@ -92,11 +58,11 @@ export default function CamperCard({
             <svg className={css.locIcon}>
               <use xlinkHref={`${sprite}#location`}></use>
             </svg>
-            <p>{location}</p>
+            <p>{swappedLocation}</p>
           </div>
         </div>
-        <p className={css.description}>{slicedDescription}</p>
-        <BadgesList camperItems={camperItems} />
+        <p className={css.description}>{description}</p>
+        <BadgesList camper={camper} />
 
         <Link to={`/campers/${id}`}>
           <button className={css.showMoreBtn}>Show more</button>

@@ -1,9 +1,19 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --main-black-color: #101828;
+  --main-text-color: #475467;
+  --main-gray-color: #6c717b;
+  --main-button-color: #e44848;
+  --main-button-hover-color: #d84343;
+  --main-rating-color: #ffc531;
+  --main-gray-light-color: #dadde1;
+  --main-badges-color: #f2f4f7;
+  --main-inputs-color: #f7f7f7;
+  --main-white-color: #ffffff;
 
-  color-scheme: light dark;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

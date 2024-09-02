@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCamperById, fetchCampers } from "./campersOperations";
+import { fetchCamperById, fetchCampers } from "./campersOperations.js";
 
 const handlePending = (state) => {
     state.loading = true;
 };
 
-const handleReject = (state, action) => {
+const handleRejected = (state, action) => {
     state.loading = false;
     state.error = action.payload;
 };
@@ -51,24 +51,25 @@ const campersSlise = createSlice({
             .addCase(fetchCampers.fulfilled, (state, action) => {
                 state.loading = false;
                 state.error = null;
+                // Додаємо тільки елементи, яких ще немає в state.items
                 state.items = [
                     ...state.items,
                     ...action.payload.items.filter(
-                        (newItem) => !state.items.some((currentItem) => currentItem.id === newItem.id)
+                        (newItem) => !state.items.some((existingItem) => existingItem.id === newItem.id)
                     ),
                 ];
 
                 state.totalItems = action.payload.total;
                 state.morePages = state.items.length < state.totalItems;
             })
-            .addCase(fetchCampers.rejected, handleReject)
+            .addCase(fetchCampers.rejected, handleRejected)
             .addCase(fetchCamperById.pending, handlePending)
             .addCase(fetchCamperById.fulfilled, (state, action) => {
                 state.loading = false;
                 state.error = null;
                 state.currentItem = action.payload;
             })
-            .addCase(fetchCamperById.rejected, handleReject);
+            .addCase(fetchCamperById.rejected, handleRejected);
     },
 });
 
