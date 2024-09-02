@@ -17,7 +17,6 @@ export default function CatalogPage() {
   const loading = useSelector(selectLoading);
 
   useEffect(() => {
-    console.log("fetch campers");
     dispatch(fetchCampers());
   }, [dispatch]);
 

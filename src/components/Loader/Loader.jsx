@@ -1,5 +1,5 @@
 import css from './Loader.module.css';
-import RingLoader from "react-spinners/RingLoader";
+import PacmanLoader from "react-spinners/RingLoader";
 
 const override = {
   display: "block",
@@ -9,7 +9,7 @@ const override = {
 export default function Loader({ isLoading }) {
   return (
     <div className={css.spinerContainer}>
-      <RingLoader
+      <PacmanLoader
         color={"#d84343"}
         loading={isLoading}
         cssOverride={override}

@@ -21,9 +21,8 @@ export default function CampersList() {
       dispatch(fetchCampers());
     }
   };
-console.log(campers)
   return (
-    <div className={css.camperCardCollectionWrapper}>
+    <div>
       <ul className={css.itemsList}>
         {items.map((camper) => (
           <li key={camper.id}>

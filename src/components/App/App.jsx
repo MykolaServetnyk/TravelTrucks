@@ -1,11 +1,10 @@
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 import {lazy, Suspense } from 'react';
-// import { useDispatch, useSelector } from "react-redux";
 import Layout from '../Layout/Layout';
+
 const Features = lazy(() => import("../Features/Features.jsx"));
 const Reviews = lazy(() => import("../Reviews/Reviews.jsx"));
-
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const CamperPage = lazy(() => import('../../pages/CamperPage/CamperPage'));

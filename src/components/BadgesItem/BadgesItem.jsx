@@ -4,7 +4,6 @@ import getIcon from "../../getIcon";
 
 export default function BadgesItem({ label, value }) {
 
-  // Функція для капіталізації першої літери тексту
   const firstLetter = (text) => {
     if (!text) return "";
     return text.charAt(0).toUpperCase() + text.slice(1);
@@ -12,7 +11,6 @@ export default function BadgesItem({ label, value }) {
 
   return (
     <>
-      {/* Якщо значення є строкою і не порожнє, показуємо значення */}
       {typeof value === 'string' && value ? (
         <p className={css.badgesItem}>
           <svg className={css.icon}>
@@ -21,7 +19,6 @@ export default function BadgesItem({ label, value }) {
           {firstLetter(value)}
         </p>
       ) : (
-        // Інакше показуємо лише мітку
         <p className={css.badgesItem}>
           <svg className={css.icon}>
             <use xlinkHref={`${sprite}${getIcon(label)}`}></use>
