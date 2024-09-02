@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Suspense, useEffect } from "react";
 import { Outlet, useParams } from "react-router-dom";
 import { selectCampers, selectError, selectLoading } from "../../redux/campers/campersSelectors.js";
-import { fetchCamperById } from "../../redux/campers/camperOperations.js";
+import { fetchCamperById } from "../../redux/campers/campersOperations.js";
 
 import CamperInfo from "../../components/CamperInfo/CamperInfo.jsx";
 import CamperInfoLinks from "../../components/CamperInfoLinks/CamperInfoLinks.jsx";
