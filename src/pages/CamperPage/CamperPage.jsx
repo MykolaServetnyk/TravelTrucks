@@ -3,12 +3,11 @@ import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Suspense, useEffect } from "react";
 import { Outlet, useParams } from "react-router-dom";
-import { selectCampers, selectError, selectLoading } from "../../redux/campers/selectors.js";
-import { fetchCamperById } from "../../redux/campers/operations.js";
+import { selectCampers, selectError, selectLoading } from "../../redux/campers/campersSelectors.js";
+import { fetchCamperById } from "../../redux/campers/camperOperations.js";
 
 import CamperInfo from "../../components/CamperInfo/CamperInfo.jsx";
 import CamperInfoLinks from "../../components/CamperInfoLinks/CamperInfoLinks.jsx";
-import BookingForm from "../../components/BookingForm/BookingForm.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
 
 import css from "./CamperPage.module.css";
@@ -29,10 +28,10 @@ export default function CamperPage() {
     <section className={css.camper}>
       {loading && <Loader isLoading={loading} />}
       {currentItem && (
-        <div className={css.container}>
+        <div>
           <CamperInfo camper={currentItem} />
           <CamperInfoLinks />
-          <div className={css.secondContainer}>
+          <div>
             <Suspense fallback={<div>Loading...</div>}>
               <Outlet />
             </Suspense>
