@@ -1,8 +1,16 @@
+import { useDispatch, useSelector } from "react-redux";
+
+import { toggleFavorite } from "../../redux/campers/campersSlice.js";
+import { selectCampers } from "../../redux/campers/campersSelectors.js";
+
 import { Link } from "react-router-dom";
 import css from "./CamperCard.module.css";
 import sprite from "../../assets/sprite.svg";
+
 import BadgesList from "../BadgesList/BadgesList";
 import ratingImage from "../../assets/rating.png"; // Імпортуємо зображення рейтингу
+
+
 
 export default function CamperCard({
   id = "no-data",
@@ -29,6 +37,9 @@ export default function CamperCard({
     if (text.length > maxLength) {
       return text.substring(0, maxLength) + "...";
     }
+
+    const location = useLocation();
+
     return text;
   };
 

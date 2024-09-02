@@ -7,7 +7,7 @@ import css from "./HomePage.module.css";
 export default function HomePage() {
 
     return (
-
+<section className={css.hero}>
         <div className={css.homePage}>
             <div className={css.homeContent}>
                 <PageTitle>Campers of your dreams</PageTitle>
@@ -15,5 +15,6 @@ export default function HomePage() {
                 <ViewNowButton/>
             </div>
         </div>
+</section>
     )
 }

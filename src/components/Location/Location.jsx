@@ -1,24 +1,17 @@
-import css from './Location.module.css';
-import sprite from "../../assets/sprite.svg"
+import { Field, Form, Formik } from "formik";
 
-export default function Location({ location, setLocation }) {
+import css from './Location.module.css';
+
+export default function Location() {
     
     return (
     <div className={css.location}>
-      <h2 className={css.locTitle}>Location</h2>
+      <label className={css.locTitle} htmlFor={cityFieldId}>Location</label>
       <div className={css.fieldBox}>
           <svg className={css.icon}>
             <use xlinkHref={`${sprite}#location`}></use>
           </svg>
-        <input 
-          className={css.field}  
-          type="text" 
-          id="location" 
-          name="location"
-          placeholder='City'  
-          value={location} 
-          onChange={(e) => setLocation(e.target.value)}
-        />
+      <Field className={css.field} type="text" name="location" id={cityFieldId} placeholder="City" />
       </div>
     </div>
   );

@@ -1,21 +1,40 @@
 import css from "./CampersList.module.css";
 import CamperCard from "../CamperCard/CamperCard";
 
-export default function CampersList({ campers }) {
-  // Додана перевірка на випадок, якщо campers буде undefined або null
-  if (!campers || campers.length === 0) {
-    return <p>No campers available.</p>; // Або можна повернути null або інший компонент
-  }
+import { useDispatch, useSelector } from "react-redux";
+import { selectCampers, selectError } from "../../redux/campers/selectors.js";
+import { fetchCampers } from "../../redux/campers/operations.js";
+import { incrementPage } from "../../redux/campers/slice.js";
+
+import LoadMoreButton from "../LoadMoreButton/LoadMoreButton.jsx";
+import CamperCard from "../CamperCard/CamperCard.jsx";
+
+import css from "./CamperCardCollection.module.css";
+
+export default function CamperCardCollection() {
+  const dispatch = useDispatch();
+  const campers = useSelector(selectCampers);
+  const error = useSelector(selectError);
+  const { morePages } = useSelector(selectCampers);
+  const { items = [] } = campers;
+
+  const handleLoadMore = () => {
+    if (morePages) {
+      dispatch(incrementPage());
+      dispatch(fetchCampers());
+    }
+  };
 
   return (
-    <div>
-      <ul className={css.itemsList}>
-        {campers.map((camper) => (
-          <li key={camper.id}> {/* Використовуйте camper.id як унікальний ключ */}
-            <CamperCard {...camper} />
+    <div className={css.camperCardCollectionWrapper}>
+      <ul className={css.collectionList}>
+        {items.map((camper) => (
+          <li key={camper.id}>
+            <CamperCard camper={camper} />
           </li>
         ))}
       </ul>
+      {!error && morePages && <LoadMoreButton onClick={handleLoadMore}>Load more</LoadMoreButton>}
     </div>
   );
 }
